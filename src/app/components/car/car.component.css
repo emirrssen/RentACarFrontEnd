@@ -1,0 +1,100 @@
+.btn {
+    width: 150px;
+}
+
+.row {
+    margin-bottom: 15px;
+}
+
+.card,
+.card-header,
+.card-body,
+.card-footer {
+    border-radius: 0px;
+    background-color: transparent;
+}
+
+.card {
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.6);
+}
+
+.my-btn {
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.my-btn:hover {
+    color: red;
+}
+
+.content-container {
+    height: 300px;
+    width: 730px;
+    /* background-color: green; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.content-container .picture-wrapper {
+    height: 96%;
+    width: 250px;
+    background-image: url(../../../assets/default.png);
+    background-size: cover;
+    background-position: center;
+    border: 2px solid white;
+    box-shadow: 4px 4px 8px grey;
+}
+
+.content-container .content-wrapper {
+    height: 96%;
+    width: 440px;
+    position: relative;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.search-bar-container {
+    height: 60px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar-wrapper {
+    height: 90%;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 3px solid black;
+    border-radius: 35px;
+    padding: 10px;
+}
+
+.search-bar-container #search-bar {
+    width: 95%;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    position: relative;
+}
+
+.search-bar-container .icon {
+    background-size: cover;
+    height: 40px;
+    width: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

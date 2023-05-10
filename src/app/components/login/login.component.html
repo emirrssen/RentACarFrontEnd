@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form #loginform="ngForm" (ngSubmit)="login(loginform.value)" class="form-container">
+        <div class="form-wrapper">
+            <div class="login-form">
+                <div class="form-header">LOGIN</div>
+                <div class="form-body">
+                    <div class="input-wrapper">
+                        <div class="name">EMAIL</div>
+                        <input type="text" name="email" placeholder="Enter your email" id="email" autocomplete="off" ngModel>
+                    </div>
+                    <div class="input-wrapper">
+                        <div class="name">PASSWORD</div>
+                        <input type="password" name="password" placeholder="Enter your password" id="password" autocomplete="off" ngModel>
+                    </div>
+                    <span><a href="#">FORGOT YOUR PASSWORD?</a></span>
+                </div>
+                <div class="form-footer">
+                    <button type="submit">LOGIN</button>
+                    <span><a routerLink="/register">REGISTER</a></span>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

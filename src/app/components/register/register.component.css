@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Rajdhani:wght@400;500&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: content-box;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+html, body {
+    height: 100vh;
+    width: 100%;
+    background-image: url(../../../assets/bg-login.jpeg);
+    background-position: center;
+    background-size: cover;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-wrapper {
+    height: 400px;
+    width: 300px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-right-color: rgba(255, 255, 255, 0.1);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 11px 30px rgba(255, 255, 255, 0.6);
+    position: relative;
+    top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.register-form {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.form-header {
+    height: 20%;
+    width: 100%;
+    /* font-family: 'Rajdhani', sans-serif; */
+    /* background-color: rgba(255, 255, 255, 0.1); */
+    position: absolute;
+    top: 0px;
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.form-body {
+    height: 50%;
+    width: 100%;
+    /* font-family: 'Rajdhani', sans-serif; */
+    /* background-color: rgba(255, 255, 255, 0.6); */
+    position: absolute;
+    top: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 13px;
+}
+
+.form-body input {
+    height: 30px;
+    width: 200px;
+    padding-left: 5px;
+}
+
+.form-body input:focus {
+    box-shadow: 0 8px 12px rgba(255, 255, 255, 0.4);
+}
+
+.form-body span {
+    position: relative;
+    top: 40px;
+    font-size: 13px;
+}
+
+.form-body span a {
+    color: white;
+    text-decoration: none;
+}
+
+.form-footer {
+    height: 30%;
+    width: 100%;
+    /* background-color: green; */
+    position: absolute;
+    top: 70%;
+    /* font-family: 'Castoro Titling', cursive; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-footer input {
+    height: 30px;
+    width: 120px;
+    margin-bottom: 15px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    /* font-family: 'Castoro Titling', cursive; */
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid white;
+    border-radius: 4px;
+    box-shadow: 0 10px 10px rgba(255, 255, 255, 0.2);
+}
+
+.form-footer input:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.form-footer span{
+    font-size: 13px;
+}
+
+.form-footer span a {
+    color: white;
+    text-decoration: none;
+}
+
+.register-form .form-body {
+    justify-content: space-between;
+    height: 60%;
+    top: 15%;
+}
+
+.register-form .form-footer {
+    height: 25%;
+    top: 75%;
+}
+
+.register-form .form-header {
+    align-items: center;
+    height: 15%;
+}

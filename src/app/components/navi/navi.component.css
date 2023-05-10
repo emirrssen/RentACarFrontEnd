@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap');
+
+* {
+    font-family: 'Castoro Titling', cursive;
+}
+
+.general-controllers {
+    width: 280px;
+    height: 50px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.title-wrapper {
+    height: 45px;
+    width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons-wrapper {
+    height: 45px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.general-controllers .title {
+    color: white;
+    font-size: 22px;
+    padding-top: 5px;
+}
+
+.general-controllers button {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 3px;
+}
+
+.general-controllers button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.profile-controllers {
+    width: 300px;
+    height: 50px;
+    position: relative;
+    /* background-color: red; */
+}

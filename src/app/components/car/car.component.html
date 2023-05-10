@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+<div class="text-center">
+    <div *ngIf="dataLoaded == false" class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 d-flex justify-content-center">
+    <div *ngIf="dataLoaded" class="search-bar-container">
+        <div class="search-bar-wrapper">
+            <div class="icon"><span class="material-symbols-outlined">search</span></div>
+            <input type="text" [(ngModel)]="searchText" placeholder="Search a car" id="search-bar">
+        </div>
+    </div>
+    <div *ngFor="let car of carsForList | search:searchText" class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card" style="width: 20rem;">
+            <img src="../../../assets/default.png" class="card-img-top" alt="...">
+            <div class="card-header text-center">
+                <h5 class="card-title text-center">{{car.brandName}} {{car.carName}}</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Color: {{car.colorName}}</p>
+                <p class="card-text">Model Year: {{car.modelYear}}</p>
+                <p class="card-text">Daily Price: {{car.dailyPrice | currency}}</p>
+            </div>
+            <div class="card-footer">
+                <p (click)="getDetails(car)" class="text-center"><a href="#" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Details</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content rounded-top-1">
+            <div class="modal-header bg-dark rounded-top-1">
+                <h1 *ngIf="currentCar" style="color: white;" class="modal-title fs-5" id="exampleModalLabel">{{currentCar.brandName}}
+                    {{currentCar.carName}}</h1>
+                <button type="button" class="my-btn" data-bs-dismiss="modal" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="modal-body d-flex justify-content-center rounded-0">
+                <div class="content-container">
+                    <div class="picture-wrapper"></div>
+                    <div class="content-wrapper">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint enim, repellendus labore ipsa aliquam minus deleniti mollitia maxime autem sunt quas. Ab molestias reiciendis beatae minus itaque excepturi ex aperiam veritatis, cupiditate facere, dolore hic assumenda dolor et nihil quia ratione ipsa a placeat eius porro iste cum iure. Repellendus consequatur esse, quasi consectetur beatae nisi ex assumenda odit! Fugit quas quae iusto voluptatem id quam libero repellat repudiandae. Sapiente quisquam dolor, cupiditate laborum ex odit beatae aspernatur nesciunt perspiciatis, omnis ipsum inventore eligendi fuga autem optio. Ipsa, pariatur distinctio!
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bg-dark rounded-bottom-1">
+                <button type="button" class="btn btn-light rounded-1">Rent</button>
+            </div>
+        </div>
+    </div>
+</div>

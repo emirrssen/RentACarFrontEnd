@@ -1,0 +1,42 @@
+.card,
+.card-header,
+.card-body {
+    border-radius: 0px;
+}
+
+.card {
+    margin-top: 10px;
+    border-radius: 3px;
+}
+
+.card-header {
+    background-color: #636e72;
+    color: white;
+}
+
+.added-filter-button-wrapper {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #636e72;
+    border-radius: 12px;
+    padding-left: 10px;
+    margin-bottom: 4px;
+    background-color: #636e72;
+    color: white;
+    font-size: 14px;
+}
+
+.added-filter-button-wrapper button {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.added-filter-button-wrapper button:hover {
+    color: red;
+}
