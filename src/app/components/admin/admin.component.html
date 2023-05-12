@@ -6,11 +6,11 @@
       <div class="control-panel">
         <div class="title">Admin Panel</div>
         <div class="button-wrapper">
-          <button>Car Operations</button>
-          <button>Rental Operations</button>
-          <button>Customer Operations</button>
-          <button>Brand Operations</button>
-          <button>Color Operations</button>
+          <button (click)="selected='carOperations'">Car Operations</button>
+          <button (click)="selected='rentalOperations'">Rental Operations</button>
+          <button (click)="selected='customerOperations'">Customer Operations</button>
+          <button (click)="selected='brandOperations'">Brand Operations</button>
+          <button (click)="selected='colorOperations'">Color Operations</button>
           <button>...</button>
           <button>...</button>
         </div>
@@ -18,7 +18,8 @@
       </div>
     </div>
     <div class="col-10">
-        <app-car-operations-form></app-car-operations-form>
+        <app-car-operations-form *ngIf="selected == 'carOperations'"></app-car-operations-form>
+        <app-rental-operations-form *ngIf="selected == 'rentalOperations'"></app-rental-operations-form>
       </div>
     </div>
   </div>

@@ -16,6 +16,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CarOperationsFormComponent } from './components/admin/car-operations-form/car-operations-form.component';
+import { RentalOperationsFormComponent } from './components/admin/rental-operations-form/rental-operations-form.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CarOperationsFormComponent } from './components/admin/car-operations-fo
     SearchPipe,
     HomeComponent,
     AdminComponent,
-    CarOperationsFormComponent
+    CarOperationsFormComponent,
+    RentalOperationsFormComponent
   ],
   imports: [
     BrowserModule,
