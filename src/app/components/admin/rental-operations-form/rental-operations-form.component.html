@@ -3,43 +3,33 @@
         <div class="form-wrapper">
             <form [formGroup]="rentalOperationsForm" (ngSubmit)="save()">
                 <div class="mb-3">
-                    <select formControlName="brandid">
-                        <option value="" disabled selected hidden>Brand</option>
-                        <option value="1">Fiat</option>
-                        <option value="2">Renault</option>
-                        <option value="3">Ford</option>
-                        <option value="4">Kia</option>
+                    <select formControlName="carId">
+                        <option value="" disabled selected hidden>Car</option>
+                        <option *ngFor="let car of allCars" value={{car.carId}}>{{car.brandName}} {{car.carName}}</option>
                     </select>
                 </div>
                 <div class="mb-3">
-                    <select formControlName="colorid">
-                        <option value="" disabled selected hidden>Color</option>
-                        <option value="1">Black</option>
-                        <option value="2">White</option>
-                        <option value="3">Grey</option>
-                        <option value="4">Red</option>
+                    <select formControlName="customerId">
+                        <option value="" disabled selected hidden>Customer</option>
+                        <option *ngFor="let customer of allCustomers" value={{customer.customerId}}>{{customer.firstName}} {{customer.lastName}}</option>
                     </select>
                 </div>
                 <div class="mb-3">
-                    <input type="text" formControlName="name" placeholder="Name">
+                    <input type="date" formControlName="rentDate">
                 </div>
                 <div class="mb-3">
-                    <input type="text" formControlName="modelyear" placeholder="Model Year">
+                    <input type="date" formControlName="returnDate">
                 </div>
-                <div class="mb-3">
-                    <input type="number" formControlName="dailyprice" placeholder="Daily Price">
-                </div>
-                <div class="mb-3">
-                    <input type="text" formControlName="description" placeholder="Description">
-                </div>
-                <div *ngIf="editModeOn" class="mb-3">
-                    <button (click)="clearForm()">New Record</button>
-                </div>
-                <div class="mb-3">
-                    <button type="submit">Save</button>
-                </div>
-                <div *ngIf="editModeOn" class="mb-3">
-                    <button (click)="deleteRental()">Delete</button>
+                <div class="button-wrapper">
+                    <div *ngIf="editModeOn" class="mb-3">
+                        <button (click)="clearForm()">New Record</button>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit">Save</button>
+                    </div>
+                    <div *ngIf="editModeOn" class="mb-3">
+                        <button (click)="deleteRental()">Delete</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -59,8 +49,8 @@
                     <th scope="row">{{rental.rentalId}}</th>
                     <td>{{rental.carId}}</td>
                     <td>{{rental.customerId}}</td>
-                    <td>{{rental.rentDate}}</td>
-                    <td>{{rental.returnDate}}</td>
+                    <td>{{rental.rentDate | date}}</td>
+                    <td>{{rental.returnDate | date}}</td>
                   </tr>
                 </tbody>
               </table>
