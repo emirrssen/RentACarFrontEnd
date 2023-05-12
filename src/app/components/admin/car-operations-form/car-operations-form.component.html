@@ -1,0 +1,65 @@
+<div class="container-fluid h-100 w-100">
+    <div class="col-12 h-100 w-100 d-flex justify-content-center align-items-start p-3">
+        <div class="form-wrapper">
+            <form [formGroup]="carOperationsForm" (ngSubmit)="save()">
+                <div class="mb-3">
+                    <select formControlName="brandid">
+                        <option value="" disabled selected hidden>Brand</option>
+                        <option value="1">Fiat</option>
+                        <option value="2">Renault</option>
+                        <option value="3">Ford</option>
+                        <option value="4">Kia</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select formControlName="colorid">
+                        <option value="" disabled selected hidden>Color</option>
+                        <option value="1">Black</option>
+                        <option value="2">White</option>
+                        <option value="3">Grey</option>
+                        <option value="4">Red</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <input type="text" formControlName="name" placeholder="Name">
+                </div>
+                <div class="mb-3">
+                    <input type="text" formControlName="modelyear" placeholder="Model Year">
+                </div>
+                <div class="mb-3">
+                    <input type="number" formControlName="dailyprice" placeholder="Daily Price">
+                </div>
+                <div class="mb-3">
+                    <input type="text" formControlName="description" placeholder="Description">
+                </div>
+                <div class="mb-3">
+                    <button type="submit">Send</button>
+                </div>
+            </form>
+        </div>
+        <div class="table-wrapper p-2">
+            <table class="table">
+                <thead>
+                  <tr style="text-align: center;">
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Brand Id</th>
+                    <th scope="col">Color Id</th>
+                    <th scope="col">Model Year</th>
+                    <th scope="col">Daily Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr (click)="loadToForm(car)" *ngFor="let car of allCars" style="text-align: center;">
+                    <th scope="row">{{car.id}}</th>
+                    <td>{{car.name}}</td>
+                    <td>{{car.brandId}}</td>
+                    <td>{{car.colorId}}</td>
+                    <td>{{car.modelYear}}</td>
+                    <td>{{car.dailyPrice}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

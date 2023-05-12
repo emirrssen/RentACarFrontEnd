@@ -17,18 +17,22 @@ export class CarComponent implements OnInit, DoCheck {
   carsForList: CarForList[] = []
   modelYears: string[] = [];
   currentCar: CarForList;
-  @Input() selectedFilters: string[] = [];
+  @Input() selectedFilters: Filters;
   searchText: string = "";
   dataLoaded: boolean = false;
+  filteredCars: CarForList[] = [];
 
   constructor(private carService:CarService) {}
 
   ngDoCheck(): void {
-    if (this.selectedFilters.length > 0) {
-      this.applyFilters(this.selectedFilters, this.cars);
-    } else if (this.selectedFilters.length == 0) {
+    if (this.selectedFilters.brandFilters.length > 0 || this.selectedFilters.colorFilters.length > 0 || this.selectedFilters.modelYearFilters.length > 0) {
+      this.applyFilters(this.selectedFilters);
+    } else if (this.selectedFilters.brandFilters.length === 0 && this.selectedFilters.colorFilters.length === 0 && this.selectedFilters.modelYearFilters.length === 0) {
       this.carsForList = this.cars;
     }
+
+    console.log(this.selectedFilters);
+    
   }
 
   ngOnInit(): void {
@@ -59,51 +63,28 @@ export class CarComponent implements OnInit, DoCheck {
     }
   }
 
-  private applyFilters(filters: string[], cars: CarForList[]) {
-    let filteredCars = [];
-    let seperatedFilters = this.seperateFilters(filters);
+  applyFilters(filters: Filters) {
+    this.filteredCars = this.cars.filter(car => {
+      let brandMatch = false;
+      let colorMatch = false;
+      let modelYearMatch = false;
 
-    for (const car of cars) {
-      for (const brandFilter of seperatedFilters.brandFilters) {
-        for (const colorFilter of seperatedFilters.colorFilters) {
-          for (const modelYearFilter of seperatedFilters.modelYearFilters) {
-            if (seperatedFilters.brandFilters.length > 0 && 
-                seperatedFilters.colorFilters.length > 0 &&
-                seperatedFilters.modelYearFilters.length > 0) {
-                  if (car.brandName == brandFilter.slice(4, brandFilter.length) 
-                      || car.colorName == colorFilter.slice(4, colorFilter.length) 
-                      || car.modelYear == modelYearFilter.slice(4, modelYearFilter.length)) {
-                    filteredCars.push(car)
-                    console.log('1.' + filteredCars);
-                    
-                  }
-            }
-          }
-        }
-      }
-    }
-
-    this.carsForList = filteredCars;
-  }
-
-  private seperateFilters(filters: string[]): Filters {
-    let returnedFilters: Filters = new Filters();
-
-    for (const filter of filters) {
-      if (filter.includes('brn_')) {
-        returnedFilters.brandFilters.push(filter);
+      if (filters.brandFilters.length === 0 || filters.brandFilters.includes(car.brandName)) {
+        brandMatch = true;
       }
 
-      if (filter.includes('clr_')) {
-        returnedFilters.colorFilters.push(filter)
+      if(filters.colorFilters.length === 0 || filters.colorFilters.includes(car.colorName)) {
+        colorMatch = true;
       }
 
-      if (filter.includes('mdl_')) {
-        returnedFilters.modelYearFilters.push(filter);
+      if(filters.modelYearFilters.length === 0 || filters.modelYearFilters.includes(car.modelYear)) {
+        modelYearMatch = true;
       }
-    }
 
-    return returnedFilters;
+      return brandMatch && colorMatch && modelYearMatch;
+    })
+
+    this.carsForList = this.filteredCars;
   }
 }
 

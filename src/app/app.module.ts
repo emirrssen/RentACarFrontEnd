@@ -15,6 +15,7 @@ import { SearchPipe } from './pipes/search/search.pipe';
 import { HomeComponent } from './components/home/home.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CarOperationsFormComponent } from './components/admin/car-operations-form/car-operations-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     SearchPipe,
     HomeComponent,
-    AdminComponent
+    AdminComponent,
+    CarOperationsFormComponent
   ],
   imports: [
     BrowserModule,

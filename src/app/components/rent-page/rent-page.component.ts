@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Filters } from 'src/app/models/filters/filters';
 
 @Component({
   selector: 'app-rent-page',
@@ -7,9 +8,9 @@ import { Component } from '@angular/core';
 })
 export class RentPageComponent {
   returnedModelYears: string[] = [];
-  selectedFilters: string[] = [];
+  selectedFilters: Filters = new Filters();
 
-  getSelectedFilters(obj: string[]) {
+  getSelectedFilters(obj: Filters) {
     this.selectedFilters = obj;
   }
 

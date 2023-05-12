@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
-<div *ngIf="selectedFilters.length > 0" class="card border-dark mb-1 position-sticky" style="max-width: 18rem;">
+<div *ngIf="filtersToDisplay.length > 0" class="card border-dark mb-1 position-sticky" style="max-width: 18rem;">
   <div class="card-header">Selected Filters</div>
   <div class="card-body">
-    <div *ngFor="let filter of selectedFilters" class="added-filter-button-wrapper">
+    <div *ngFor="let filter of filtersToDisplay" class="added-filter-button-wrapper">
       <span>{{filter.slice(4, filter.length)}}</span>
       <button (click)="addFilter(filter)"><span class="material-symbols-outlined">close</span></button>
     </div>
@@ -14,7 +14,7 @@
     <div class="card-header">Brand</div>
     <div class="card-body">
         <div *ngFor="let brand of brands" class="form-check">
-            <input (click)="addFilter('brn_' + brand.brandName)" class="form-check-input" type="checkbox" value="" id="flexBrandCheck{{brand.id}}" [checked]="checkIfSelected('brn_' + brand.brandName)">
+            <input (click)="addFilter('brd_' + brand.brandName)" class="form-check-input" type="checkbox" value="" id="flexBrandCheck{{brand.id}}" [checked]="checkIfFilterSelected('brd_' + brand.brandName)">
             <label class="form-check-label" for="flexBrandCheck{{brand.id}}">
               {{brand.brandName}}
             </label>
@@ -26,7 +26,7 @@
     <div class="card-header">Color</div>
     <div class="card-body">
         <div *ngFor="let color of colors" class="form-check">
-            <input (click)="addFilter('clr_' + color.colorName)" class="form-check-input" type="checkbox" value="" id="flexColorCheck{{color.id}}" [checked]="checkIfSelected('clr_' + color.colorName)">
+            <input (click)="addFilter('clr_' + color.colorName)" class="form-check-input" type="checkbox" value="" id="flexColorCheck{{color.id}}" [checked]="checkIfFilterSelected('clr_' + color.colorName)">
             <label class="form-check-label" for="flexColorCheck{{color.id}}">
               {{color.colorName}}
             </label>
@@ -38,7 +38,7 @@
     <div class="card-header">Model Year</div>
     <div class="card-body">
         <div *ngFor="let modelYear of modelYears; index as i" class="form-check">
-            <input (click)="addFilter('mdl_' + modelYear)" class="form-check-input" type="checkbox" value="" id="flexModelYearCheck{{i}}" [checked]="checkIfSelected('mdl_' + modelYear)">
+            <input (click)="addFilter('mdl_' + modelYear)" class="form-check-input" type="checkbox" value="" id="flexModelYearCheck{{i}}" [checked]="checkIfFilterSelected('mdl_' + modelYear)">
             <label class="form-check-label" for="flexModelYearCheck{{i}}">
               {{modelYear}}
             </label>
