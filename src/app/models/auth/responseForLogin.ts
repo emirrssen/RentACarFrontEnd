@@ -1,4 +1,8 @@
+import { AccessToken } from "./accessToken";
+
 export interface ResponseForLogin {
-    token: string;
-    expirationDate: Date;
+    accessToken: AccessToken
+    firstName: string
+    lastName: string
+    email: string
 }
