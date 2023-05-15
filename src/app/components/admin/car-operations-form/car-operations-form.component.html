@@ -1,17 +1,17 @@
 <div class="container-fluid h-100 w-100">
     <div class="col-12 h-100 w-100 d-flex justify-content-center align-items-start p-3">
         <div class="form-wrapper">
-            <form [formGroup]="carOperationsForm" (ngSubmit)="save()">
+            <form [formGroup]="carOperationsForm">
                 <div class="mb-3">
                     <select formControlName="brandid">
                         <option value="" disabled selected hidden>Brand</option>
-                        <option *ngFor="let brand of allBrands" value={{brand.id}}>{{brand.brandName}}</option>
+                        <option *ngFor="let brand of allBrands" value={{brand.brandId}}>{{brand.brandName}}</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <select formControlName="colorid">
                         <option value="" disabled selected hidden>Color</option>
-                        <option *ngFor="let color of allColors" value={{color.id}}>{{color.colorName}}</option>
+                        <option *ngFor="let color of allColors" value={{color.colorId}}>{{color.colorName}}</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -31,7 +31,7 @@
                         <button (click)="clearForm()">New Record</button>
                     </div>
                     <div class="mb-3">
-                        <button type="submit">Save</button>
+                        <button (click)="save()" type="submit">Save</button>
                     </div>
                     <div *ngIf="editModeOn" class="mb-3">
                         <button (click)="deleteCar()">Delete</button>

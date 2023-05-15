@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ResponseForLogin } from 'src/app/models/auth/responseForLogin';
 import { UserForLogin } from 'src/app/models/auth/userForLogin';
 import { ListResponseModel } from 'src/app/models/listResponseModel';
+import { SingleResponseModel } from 'src/app/models/singleResponseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,15 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-  login(userForLogin: UserForLogin):Observable<ListResponseModel<ResponseForLogin>> {
+  login(userForLogin: UserForLogin):Observable<SingleResponseModel<ResponseForLogin>> {
     let newUrl = this.apiUrl + "login"
-    return this.httpClient.post<ListResponseModel<ResponseForLogin>>(newUrl, userForLogin);
+    return this.httpClient.post<SingleResponseModel<ResponseForLogin>>(newUrl, userForLogin);
+  }
+
+  isAuthenticated() {
+    if (localStorage.getItem("token")) {
+      return true;
+    }
+    return false;
   }
 }

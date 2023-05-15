@@ -7,18 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <form #loginform="ngForm" (ngSubmit)="login(loginform.value)" class="form-container">
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="form-container">
         <div class="form-wrapper">
             <div class="login-form">
                 <div class="form-header">LOGIN</div>
                 <div class="form-body">
                     <div class="input-wrapper">
                         <div class="name">EMAIL</div>
-                        <input type="text" name="email" placeholder="Enter your email" id="email" autocomplete="off" ngModel>
+                        <input type="text" placeholder="Enter your email" autocomplete="off" formControlName="email">
                     </div>
                     <div class="input-wrapper">
                         <div class="name">PASSWORD</div>
-                        <input type="password" name="password" placeholder="Enter your password" id="password" autocomplete="off" ngModel>
+                        <input type="password" placeholder="Enter your password" autocomplete="off" formControlName="password">
                     </div>
                     <span><a href="#">FORGOT YOUR PASSWORD?</a></span>
                 </div>

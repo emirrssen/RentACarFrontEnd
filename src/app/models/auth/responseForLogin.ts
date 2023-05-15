@@ -1,4 +1,4 @@
 export interface ResponseForLogin {
-    token: string,
-    expirationDate: Date
+    token: string;
+    expirationDate: Date;
 }

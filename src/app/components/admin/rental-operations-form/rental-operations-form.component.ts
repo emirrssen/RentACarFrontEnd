@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CarForList } from 'src/app/models/car/carForList';
 import { CustomerForList } from 'src/app/models/customer/customerForList';
@@ -12,7 +13,7 @@ import { RentalService } from 'src/app/services/rental/rental.service';
   templateUrl: './rental-operations-form.component.html',
   styleUrls: ['./rental-operations-form.component.css']
 })
-export class RentalOperationsFormComponent {
+export class RentalOperationsFormComponent implements OnInit {
   rentalOperationsForm: FormGroup;
   allRentals: Rental[] = []
   allCustomers: CustomerForList[] = [];
@@ -23,7 +24,8 @@ export class RentalOperationsFormComponent {
   constructor(private formBuilder: FormBuilder,
               private rentalService: RentalService,
               private carService: CarService,
-              private customerService: CustomerService) {
+              private customerService: CustomerService,
+              private datePipe: DatePipe) {
     this.createRentalOperationsForm();
   }
 
@@ -73,8 +75,8 @@ export class RentalOperationsFormComponent {
     this.editModeOn = true;
     this.rentalOperationsForm.controls['carId'].setValue(rental.carId);
     this.rentalOperationsForm.controls['customerId'].setValue(rental.customerId);
-    this.rentalOperationsForm.controls['rentDate'].setValue(rental.rentDate);
-    this.rentalOperationsForm.controls['returnDate'].setValue(rental.returnDate);
+    this.rentalOperationsForm.controls['rentDate'].setValue(this.datePipe.transform(rental.rentDate, 'yyyy-MM-dd'));
+    this.rentalOperationsForm.controls['returnDate'].setValue(this.datePipe.transform(rental.returnDate, 'yyyy-MM-dd'));
     console.log(this.selectedRental);
   }
 

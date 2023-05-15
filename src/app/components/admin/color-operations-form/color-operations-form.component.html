@@ -1,0 +1,38 @@
+<div class="container-fluid h-100 w-100">
+    <div class="col-12 h-100 w-100 d-flex justify-content-center align-items-start p-3">
+        <div class="form-wrapper">
+            <form [formGroup]="colorOperationsForm">
+                <div class="mb-3">
+                    <input type="text" formControlName="colorName" placeholder="Color Name">
+                </div>
+                <div class="button-wrapper">
+                    <div *ngIf="editModeOn" class="mb-3">
+                        <button (click)="clearForm()">New Record</button>
+                    </div>
+                    <div class="mb-3">
+                        <button (click)="save()" type="submit">Save</button>
+                    </div>
+                    <div *ngIf="editModeOn" class="mb-3">
+                        <button (click)="deleteColor()">Delete</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="table-wrapper p-2">
+            <table class="table">
+                <thead>
+                  <tr style="text-align: center;">
+                    <th scope="col">Id</th>
+                    <th scope="col">Color Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr (click)="loadToForm(color)" *ngFor="let color of allColors" style="text-align: center;">
+                    <th scope="row">{{color.colorId}}</th>
+                    <td>{{color.colorName}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

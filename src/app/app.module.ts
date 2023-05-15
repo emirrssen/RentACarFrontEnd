@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,10 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CarOperationsFormComponent } from './components/admin/car-operations-form/car-operations-form.component';
 import { RentalOperationsFormComponent } from './components/admin/rental-operations-form/rental-operations-form.component';
+import { BrandOperationsFormComponent } from './components/admin/brand-operations-form/brand-operations-form.component';
+import { ColorOperationsFormComponent } from './components/admin/color-operations-form/color-operations-form.component';
+import { DatePipe } from '@angular/common';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,9 @@ import { RentalOperationsFormComponent } from './components/admin/rental-operati
     HomeComponent,
     AdminComponent,
     CarOperationsFormComponent,
-    RentalOperationsFormComponent
+    RentalOperationsFormComponent,
+    BrandOperationsFormComponent,
+    ColorOperationsFormComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,10 @@ import { RentalOperationsFormComponent } from './components/admin/rental-operati
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    DatePipe,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

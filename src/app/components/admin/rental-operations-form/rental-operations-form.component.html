@@ -1,7 +1,7 @@
 <div class="container-fluid h-100 w-100">
     <div class="col-12 h-100 w-100 d-flex justify-content-center align-items-start p-3">
         <div class="form-wrapper">
-            <form [formGroup]="rentalOperationsForm" (ngSubmit)="save()">
+            <form [formGroup]="rentalOperationsForm">
                 <div class="mb-3">
                     <select formControlName="carId">
                         <option value="" disabled selected hidden>Car</option>
@@ -15,17 +15,19 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <input type="date" formControlName="rentDate">
+                    <label for="rentDate">Rent Date</label>
+                    <input id="rentDate" type="date" formControlName="rentDate">
                 </div>
                 <div class="mb-3">
-                    <input type="date" formControlName="returnDate">
+                    <label for="returnDate">Return Date</label>
+                    <input id="returnDate" type="date" formControlName="returnDate">
                 </div>
                 <div class="button-wrapper">
                     <div *ngIf="editModeOn" class="mb-3">
                         <button (click)="clearForm()">New Record</button>
                     </div>
                     <div class="mb-3">
-                        <button type="submit">Save</button>
+                        <button (click)="save()" type="submit">Save</button>
                     </div>
                     <div *ngIf="editModeOn" class="mb-3">
                         <button (click)="deleteRental()">Delete</button>

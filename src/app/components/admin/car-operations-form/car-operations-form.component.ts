@@ -59,7 +59,8 @@ export class CarOperationsFormComponent implements OnInit {
       })
     } else {
       this.selectedCar = this.carOperationsForm.value;
-
+      console.log(this.selectedCar);
+      
       this.carService.addCar(this.selectedCar).subscribe(result => {
         console.log(result);
         this.fillTable();
