@@ -1,5 +1,5 @@
 export interface UserForUpdate {
-    userId: number,
-    email: string,
-    password: string
+    email: string
+    firstName: string
+    lastName: string
 }

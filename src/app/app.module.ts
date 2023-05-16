@@ -21,6 +21,8 @@ import { BrandOperationsFormComponent } from './components/admin/brand-operation
 import { ColorOperationsFormComponent } from './components/admin/color-operations-form/color-operations-form.component';
 import { DatePipe } from '@angular/common';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { UserOptionsComponent } from './components/user-options/user-options.component';
+import { MyRentalsComponent } from './components/my-rentals/my-rentals.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     CarOperationsFormComponent,
     RentalOperationsFormComponent,
     BrandOperationsFormComponent,
-    ColorOperationsFormComponent
+    ColorOperationsFormComponent,
+    UserOptionsComponent,
+    MyRentalsComponent
   ],
   imports: [
     BrowserModule,

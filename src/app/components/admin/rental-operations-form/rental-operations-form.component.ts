@@ -2,11 +2,11 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CarForList } from 'src/app/models/car/carForList';
-import { CustomerForList } from 'src/app/models/customer/customerForList';
 import { Rental } from 'src/app/models/rental/rental';
+import { UserForList } from 'src/app/models/user/userForList';
 import { CarService } from 'src/app/services/car/car.service';
-import { CustomerService } from 'src/app/services/customer/customer.service';
 import { RentalService } from 'src/app/services/rental/rental.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-rental-operations-form',
@@ -16,15 +16,15 @@ import { RentalService } from 'src/app/services/rental/rental.service';
 export class RentalOperationsFormComponent implements OnInit {
   rentalOperationsForm: FormGroup;
   allRentals: Rental[] = []
-  allCustomers: CustomerForList[] = [];
+  allUsers: UserForList[] = [];
   allCars: CarForList[] = [];
   editModeOn: boolean = false;
   selectedRental: Rental;
 
   constructor(private formBuilder: FormBuilder,
               private rentalService: RentalService,
+              private userService: UserService,
               private carService: CarService,
-              private customerService: CustomerService,
               private datePipe: DatePipe) {
     this.createRentalOperationsForm();
   }
@@ -32,13 +32,13 @@ export class RentalOperationsFormComponent implements OnInit {
   ngOnInit(): void {
     this.fillTable()
     this.getCars();
-    this.getCustomers();
+    this.getUsers();
   }
 
   createRentalOperationsForm() {
     this.rentalOperationsForm = this.formBuilder.group({
       carId: [""],
-      customerId: [""],
+      userId: [""],
       rentDate: [""],
       returnDate: [null],
     })
@@ -47,7 +47,7 @@ export class RentalOperationsFormComponent implements OnInit {
   save() {
     if (this.editModeOn) {
       this.selectedRental.carId = this.rentalOperationsForm.controls['carId'].value;
-      this.selectedRental.customerId = this.rentalOperationsForm.controls['customerId'].value;
+      this.selectedRental.userId = this.rentalOperationsForm.controls['userId'].value;
       this.selectedRental.rentDate = this.rentalOperationsForm.controls['rentDate'].value;
       this.selectedRental.returnDate = this.rentalOperationsForm.controls['returnDate'].value;
 
@@ -74,7 +74,7 @@ export class RentalOperationsFormComponent implements OnInit {
     this.selectedRental = rental;
     this.editModeOn = true;
     this.rentalOperationsForm.controls['carId'].setValue(rental.carId);
-    this.rentalOperationsForm.controls['customerId'].setValue(rental.customerId);
+    this.rentalOperationsForm.controls['userId'].setValue(rental.userId);
     this.rentalOperationsForm.controls['rentDate'].setValue(this.datePipe.transform(rental.rentDate, 'yyyy-MM-dd'));
     this.rentalOperationsForm.controls['returnDate'].setValue(this.datePipe.transform(rental.returnDate, 'yyyy-MM-dd'));
     console.log(this.selectedRental);
@@ -83,7 +83,7 @@ export class RentalOperationsFormComponent implements OnInit {
   clearForm() {
     this.editModeOn = false;
     this.rentalOperationsForm.controls['carId'].setValue("");
-    this.rentalOperationsForm.controls['customerId'].setValue("");
+    this.rentalOperationsForm.controls['userId'].setValue("");
     this.rentalOperationsForm.controls['rentDate'].setValue("");
     this.rentalOperationsForm.controls['returnDate'].setValue("");
   }
@@ -102,10 +102,10 @@ export class RentalOperationsFormComponent implements OnInit {
     })
   }
 
-  getCustomers() {
-    this.customerService.listAllCustomers().subscribe(result => {
-      this.allCustomers = result.data;
-      console.log(this.allCustomers);
+  getUsers() {
+    this.userService.getAll().subscribe(result => {
+      this.allUsers = result.data;
+      console.log(this.allUsers);
       
     })
   }

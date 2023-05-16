@@ -26,4 +26,15 @@ export class AuthService {
     }
     return false;
   }
+
+  hasAuthorization(claim: string, claims: string) {
+    let allClaims = claims.split(",");
+    for (const c of allClaims) {
+      if (c === claim) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }

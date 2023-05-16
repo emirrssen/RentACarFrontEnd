@@ -5,4 +5,5 @@ export interface ResponseForLogin {
     firstName: string
     lastName: string
     email: string
+    claims: string
 }

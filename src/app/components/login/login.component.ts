@@ -28,6 +28,10 @@ export class LoginComponent implements OnInit {
     this.authService.login(data).subscribe(response => {
       console.log(response);
       localStorage.setItem("token", response.data.accessToken.token)
+      localStorage.setItem("firstName", response.data.firstName)
+      localStorage.setItem("lastName", response.data.lastName)
+      localStorage.setItem("email", response.data.email)
+      localStorage.setItem("claims", response.data.claims)
       this.router.navigate(["rentpage"])
     }, responseError => {
       console.log(responseError.error);

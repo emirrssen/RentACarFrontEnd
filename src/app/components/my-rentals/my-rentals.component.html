@@ -1,0 +1,26 @@
+<div class="container-fluid p-0 d-flex align-items-center justify-content-center">
+    <div class="col-12 p-3">
+        <div class="content-wrapper">
+            <div class="table-wrapper p-2">
+                <table class="table">
+                    <thead>
+                      <tr style="text-align: center;">
+                        <th scope="col">Rental Id</th>
+                        <th scope="col">Car</th>
+                        <th scope="col">Rent Date</th>
+                        <th scope="col">Return Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let rental of allRentals" style="text-align: center;">
+                        <th scope="row">{{rental.rentalId}}</th>
+                        <td>{{rental.brandName}} {{rental.carName}}</td>
+                        <td>{{rental.rentalDate | date}}</td>
+                        <td>{{rental.returnDate | date}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -11,6 +11,19 @@
           <button routerLink="/rentpage"><span class="material-symbols-outlined">directions_car</span></button>
         </div>
       </div>
-      <div class="profile-controllers"></div>
+      <div class="profile-controllers">
+        <button style="width: 150px; justify-content: space-evenly;" class="my-button" routerLink="/login" *ngIf="isLoggedIn == false">LOGIN<span class="material-symbols-outlined">login</span></button>
+        <div *ngIf="isLoggedIn == true" class="dropdown profile">
+          <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{firstName}}
+          </button>
+          <ul class="dropdown-menu">
+            <li routerLink="/myrentals" *ngIf="isAdmin == false"><a class="dropdown-item" >My Rentals</a></li>
+            <li routerLink="/useroptions"><a class="dropdown-item" >Options</a></li>
+            <li routerLink="/" (click)="clearLocalStorage()"><a class="dropdown-item" >Log Out</a></li>
+          </ul>
+        </div>
+        <button routerLink="/admin" *ngIf="isAdmin" class="my-button"><span class="material-symbols-outlined">admin_panel_settings</span></button>
+      </div>
     </div>
   </nav>

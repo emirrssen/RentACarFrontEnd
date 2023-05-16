@@ -9,9 +9,9 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <select formControlName="customerId">
+                    <select formControlName="userId">
                         <option value="" disabled selected hidden>Customer</option>
-                        <option *ngFor="let customer of allCustomers" value={{customer.customerId}}>{{customer.firstName}} {{customer.lastName}}</option>
+                        <option *ngFor="let user of allUsers" value={{user.id}}>{{user.firstName}} {{user.lastName}}</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -50,7 +50,7 @@
                   <tr (click)="loadToForm(rental)" *ngFor="let rental of allRentals" style="text-align: center;">
                     <th scope="row">{{rental.rentalId}}</th>
                     <td>{{rental.carId}}</td>
-                    <td>{{rental.customerId}}</td>
+                    <td>{{rental.userId}}</td>
                     <td>{{rental.rentDate | date}}</td>
                     <td>{{rental.returnDate | date}}</td>
                   </tr>

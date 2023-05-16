@@ -17,10 +17,10 @@ export class LoginGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-      if (this.authService.isAuthenticated()) {
+      if (this.authService.hasAuthorization("admin", localStorage.getItem("claims"))) {
         return true;
       } else {
-        this.router.navigate(["login"])
+        this.router.navigate(["rentpage"])
         // Buraya bir toastr ekle.
         return false;
       }
