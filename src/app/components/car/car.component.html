@@ -48,8 +48,18 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer bg-dark rounded-bottom-1">
-                <button type="button" class="btn btn-light rounded-1">Rent</button>
+            <div class="modal-footer bg-dark rounded-bottom-1 d-flex justify-content-evenly align-items-center">
+                <form [formGroup]="rentForm" class="d-flex justify-content-evenly">
+                    <div class="mr-3 d-flex">
+                        <label style="color: white; margin-right: 7px;" for="rentDate">Rental Date</label>
+                        <input type="date" id="rentDate" formControlName="rentDate" style="margin-right: 15px;">
+                    </div>
+                    <div class="mr-3">
+                        <label style="color: white; margin-right: 7px;" for="returnDate">Return Date</label>
+                        <input type="date" id="returnDate" formControlName="returnDate" style="margin-right: 7px;">
+                    </div>
+                </form>
+                <button (click)="rent()" type="button" class="btn btn-light rounded-1">Rent</button>
             </div>
         </div>
     </div>

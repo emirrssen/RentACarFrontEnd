@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { concat } from 'rxjs';
 import { Brand } from 'src/app/models/brand/brand';
 import { Color } from 'src/app/models/color/color';
@@ -18,6 +19,7 @@ export class FilterBarComponent implements OnInit {
   @Input() modelYears: string[] = [];
   selectedFilters: Filters = new Filters();
   filtersToDisplay: string[] = [];
+  dailyPriceForm: FormGroup;
 
   ngOnInit(): void {
     this.getBrands();
@@ -25,8 +27,9 @@ export class FilterBarComponent implements OnInit {
   }
 
   constructor(private brandService: BrandService, 
-              private colorService: ColorService) {
-
+              private colorService: ColorService,
+              private formBuilder: FormBuilder) {
+                this.createDailyPriceForm();
   }
 
   @Output() dataEvent: EventEmitter<any> = new EventEmitter();
@@ -80,6 +83,32 @@ export class FilterBarComponent implements OnInit {
     if (this.filtersToDisplay.includes(filter)) {
       return true;
     } 
+
+    return false;
+  }
+
+  createDailyPriceForm() {
+    this.dailyPriceForm = this.formBuilder.group({
+      minValue: [],
+      maxValue: []
+    })
+  }
+
+  addDailyPriceFilter() {
+    this.selectedFilters.dailyPriceFilters = this.dailyPriceForm.value;
+    this.dataEvent.emit(this.selectedFilters);
+  }
+
+  deleteDailyPriceFilter() {
+    this.dailyPriceForm.controls['minValue'].setValue(0);
+    this.dailyPriceForm.controls['maxValue'].setValue(0);
+    this.addDailyPriceFilter();
+  }
+
+  checkIfDailyPriceFilterExists(): boolean {
+    if (this.selectedFilters.dailyPriceFilters.maxValue > 0 && this.selectedFilters.dailyPriceFilters.minValue > 0) {
+      return true;
+    }
 
     return false;
   }

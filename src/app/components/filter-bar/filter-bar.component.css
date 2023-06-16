@@ -40,3 +40,27 @@
 .added-filter-button-wrapper button:hover {
     color: red;
 }
+
+.daily-price-input {
+    width: 95%;
+    height: 20%;
+}
+
+.daily-price-button-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.daily-price-button {
+    height: 25%;
+    width: 60%;
+    background-color: transparent;
+    margin-top: 10px;
+}
+
+.daily-price-button:hover {
+    background-color: #636e72;
+    color: white;
+    border: 2px solid white;
+}

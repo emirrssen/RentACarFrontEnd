@@ -49,6 +49,22 @@
   <div class="card border-dark mb-1" style="max-width: 18rem;">
     <div class="card-header">Daily Price</div>
     <div class="card-body">
-      
+      <form [formGroup]="dailyPriceForm" (ngSubmit)="addDailyPriceFilter()">
+        <div class="mb-2">
+          <label for="minValue">Minimum Price</label>
+          <input type="number" id="minValue" formControlName="minValue" class="daily-price-input">
+        </div>
+        <div class="mb-2">
+          <label for="maxValue">Maximum Price</label>
+          <input type="number" id="maxValue" formControlName="maxValue" class="daily-price-input">
+        </div>
+        <div *ngIf="checkIfDailyPriceFilterExists()" class="added-filter-button-wrapper">
+          <span>{{dailyPriceForm.controls['minValue'].value}} - {{dailyPriceForm.controls['maxValue'].value}}</span>
+          <button (click)="deleteDailyPriceFilter()"><span class="material-symbols-outlined">close</span></button>
+        </div>
+        <div class="mb-2 daily-price-button-wrapper">
+          <button class="daily-price-button">Save</button>
+        </div>
+      </form>
     </div>
   </div>

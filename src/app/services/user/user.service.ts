@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UserOptionsComponent } from 'src/app/components/user-options/user-options.component';
 import { ListResponseModel } from 'src/app/models/listResponseModel';
 import { ResponseModel } from 'src/app/models/responseModel';
 import { SingleResponseModel } from 'src/app/models/singleResponseModel';
@@ -26,5 +27,9 @@ export class UserService {
 
   updatePassword(userForUpdate: UserForUpdate, oldPassword: string, newPassword: string): Observable<ResponseModel> {
     return this.httpClient.post<ResponseModel>(this.apiUrl + '/updatepassword', userForUpdate, {params: {oldPassword, newPassword}});
+  }
+
+  getByMail(email: string): Observable<SingleResponseModel<UserForList>> {
+    return this.httpClient.get<SingleResponseModel<UserForList>>(this.apiUrl + '/getbymail', {params: {email}});
   }
 }
