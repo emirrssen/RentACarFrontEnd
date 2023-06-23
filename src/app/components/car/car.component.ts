@@ -1,7 +1,7 @@
 import { ReturnStatement } from '@angular/compiler';
-import { AfterContentChecked, Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterContentChecked, Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { CarForList } from 'src/app/models/car/carForList';
 import { Filters } from 'src/app/models/filters/filters';
@@ -17,6 +17,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class CarComponent implements OnInit, DoCheck {
 
+  @ViewChild('closebutton') closebutton;
   cars:CarForList[] = []
   carsForList: CarForList[] = []
   modelYears: string[] = [];
@@ -30,7 +31,8 @@ export class CarComponent implements OnInit, DoCheck {
   constructor(private carService:CarService,
               private formBuilder: FormBuilder,
               private rentalService: RentalService,
-              private userService: UserService) {
+              private userService: UserService,
+              private router: Router) {
                 this.createRentForm();
               }
 
@@ -119,7 +121,10 @@ export class CarComponent implements OnInit, DoCheck {
       this.rentForm.controls['carId'].setValue(this.currentCar.carId);
       this.rentForm.controls['userId'].setValue(userId);
       this.rentalService.addRental(this.rentForm.value).subscribe(response => {
-        
+        console.log(response);
+        this.closebutton.nativeElement.click();
+      }, (error) => {
+        console.log(error);
       });
     })
   }

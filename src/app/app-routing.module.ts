@@ -10,7 +10,7 @@ import { UserOptionsComponent } from './components/user-options/user-options.com
 import { MyRentalsComponent } from './components/my-rentals/my-rentals.component';
 
 const routes: Routes = [
-  {path: "", component: HomeComponent, pathMatch: "full"},
+  {path: "", component: HomeComponent, pathMatch: "full", },
   {path: "rentpage", component:RentPageComponent},
   {path: "login", component:LoginComponent},
   {path: "register", component:RegisterComponent},

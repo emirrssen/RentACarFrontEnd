@@ -38,7 +38,7 @@
             <div class="modal-header bg-dark rounded-top-1">
                 <h1 *ngIf="currentCar" style="color: white;" class="modal-title fs-5" id="exampleModalLabel">{{currentCar.brandName}}
                     {{currentCar.carName}}</h1>
-                <button type="button" class="my-btn" data-bs-dismiss="modal" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
+                <button type="button" class="my-btn" #closebutton data-bs-dismiss="modal" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
             </div>
             <div class="modal-body d-flex justify-content-center rounded-0">
                 <div class="content-container">
